@@ -20,10 +20,9 @@ type User struct {
 	Email      string             `json:"email" bson:"email"`
 	IsVerified bool               `json:"is_verified" bson:"is_verified"`
 	IsActive   bool               `json:"is_active" bson:"is_active"`
+	IsAdmin    bool               `json:"is_admin" bson:"is_admin"`
 	Password   string             `json:"password" bson:"password"`
 }
-
-
 
 func (u User) ConvertFromUserModelToDto() dto.User {
 	var uDto dto.User
@@ -50,5 +49,6 @@ func CreateUserRequest(uDto *dto.User) (u User) {
 	u.Email = uDto.Email
 	u.IsActive = true
 	u.IsVerified = false
+	u.IsAdmin = false
 	return u
 }
