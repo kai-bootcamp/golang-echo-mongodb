@@ -31,13 +31,6 @@ func NewMongoDB() (*mongoDB, error) {
 		return nil, err
 	}
 	database := client.Database(DatabaseName)
-	//defer func(client *mongo.Client, ctx context.Context) {
-	//	err = client.Disconnect(ctx)
-	//	if err != nil {
-	//		log.Fatal(err)
-	//	}
-	//}(client, ctx)
-	//defer client.Disconnect(ctx)
 
 	mongoDB.db = database
 	return &mongoDB, nil
