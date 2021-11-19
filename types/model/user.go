@@ -2,24 +2,28 @@ package model
 
 import (
 	"go-echo-mongodb/types/dto"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type User struct {
-	Id 			primitive.ObjectID		`json:"_id,omitempty" bson:"_id,omitempty"`
-	Username 	string			`json:"username" bson:"username"`
-	FullName 	string			`json:"full_name" bson:"full_name"`
-	Sex 		string			`json:"sex" bson:"sex"`
-	Birthday	int64			`json:"birthday" bson:"birthday"`
-	Phone		string			`json:"phone" bson:"phone"`
-	Avatar		string			`json:"avatar" bson:"avatar"`
-	LastLogin	int64			`json:"last_login" bson:"last_login"`
-	OS 			string			`json:"os" bson:"os"`
-	Email 		string			`json:"email" bson:"email"`
-	IsVerified	bool			`json:"is_verified" bson:"is_verified"`
-	IsActive	bool			`json:"is_active" bson:"is_active"`
+	Id         primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Username   string             `json:"username" bson:"username"`
+	FullName   string             `json:"full_name" bson:"full_name"`
+	Sex        string             `json:"sex" bson:"sex"`
+	Birthday   int64              `json:"birthday" bson:"birthday"`
+	Phone      string             `json:"phone" bson:"phone"`
+	Avatar     string             `json:"avatar" bson:"avatar"`
+	LastLogin  int64              `json:"last_login" bson:"last_login"`
+	OS         string             `json:"os" bson:"os"`
+	Email      string             `json:"email" bson:"email"`
+	IsVerified bool               `json:"is_verified" bson:"is_verified"`
+	IsActive   bool               `json:"is_active" bson:"is_active"`
+	Password   string             `json:"password" bson:"password"`
 }
+
+
 
 func (u User) ConvertFromUserModelToDto() dto.User {
 	var uDto dto.User

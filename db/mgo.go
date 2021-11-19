@@ -2,24 +2,26 @@ package db
 
 import (
 	"context"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
 	"time"
+
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 const (
 	MongoUri = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
-	DatabaseName = "dore-draft"
+	// DatabaseName = "dore-draft"
+	DatabaseName = "dorepoc"
 )
 
-type mongoDB struct {
+type MongoDB struct {
 	db *mongo.Database
 }
 
-func NewMongoDB() (*mongoDB, error) {
-	var mongoDB mongoDB
-	client, err := mongo.NewClient(options.Client().ApplyURI(MongoUri))
+func NewMongoDB(api_string string) (*MongoDB, error) {
+	var mongoDB MongoDB
+	client, err := mongo.NewClient(options.Client().ApplyURI(api_string))
 	if err != nil {
 		log.Fatal(err)
 		return nil, err
@@ -42,4 +44,3 @@ func NewMongoDB() (*mongoDB, error) {
 	mongoDB.db = database
 	return &mongoDB, nil
 }
-
